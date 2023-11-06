@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS baltika.ships(
     Type INT NOT NULL,
     Capacity INT NOT NULL,
     Year INT NOT NULL,
---     Picture ,
+    Picture VARCHAR[],
     Dockyard INT NOT NULL,
     CONSTRAINT fk_type
       FOREIGN KEY(Type)
@@ -33,4 +33,48 @@ CREATE TABLE IF NOT EXISTS baltika.ships(
       REFERENCES baltika.ports(ID)
 );
 
-CREATE TABLE IF NOT EXISTS baltika.cargo();
+CREATE TABLE IF NOT EXISTS baltika.sender(
+    ID SERIAL PRIMARY KEY,
+    Sender VARCHAR(30) NOT NULL,
+    INNsender INT NOT NULL,
+    BankSender VARCHAR(60) NOT NULL,
+    AddressSender VARCHAR(80) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS baltika.consignee(
+    ID SERIAL PRIMARY KEY,
+    Consignee VARCHAR(30) NOT NULL,
+    INNconsignee VARCHAR(10) NOT NULL,
+    BankConsignee VARCHAR(60) NOT NULL,
+    AddressConsignee VARCHAR(80) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS baltika.cargo(
+    ID SERIAL PRIMARY KEY,
+    CustomValue INT NOT NULL,
+    DepartureDate DATE NOT NULL,
+    ArriveDate DATE NOT NULL,
+    Origin INT NOT NULL,
+    Destination INT NOT NULL,
+    CustomClearance BOOL NOT NULL,
+    Number INT NOT NULL,
+    Shipment VARCHAR(30) NOT NULL,
+    DeclareValue INT NOT NULL,
+    Unit VARCHAR(10) NOT NULL,
+    InsureValue INT NOT NULL,
+    Sender INT NOT NULL,
+    Consignee INT NOT NULL,
+    Comment TEXT,
+    CONSTRAINT fk_origin
+      FOREIGN KEY(Origin)
+	  REFERENCES baltika.ports(ID),
+	CONSTRAINT fk_destination
+      FOREIGN KEY(Destination)
+      REFERENCES baltika.ports(ID),
+    CONSTRAINT fk_sender
+      FOREIGN KEY(Sender)
+      REFERENCES baltika.sender(ID),
+    CONSTRAINT fk_consignee
+      FOREIGN KEY(Consignee)
+      REFERENCES baltika.consignee(ID)
+);

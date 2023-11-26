@@ -4,8 +4,8 @@ CREATE TABLE IF NOT EXISTS baltika.ports(
     ID SERIAL PRIMARY KEY,
     Name varchar(200) NOT NULL,
     Address varchar(500) NOT NULL,
-    Lat NUMERIC(6, 6) NOT NULL,
-    Long NUMERIC(6, 6) NOT NULL
+    Lat NUMERIC(9, 6) NOT NULL,
+    Long NUMERIC(9, 6) NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS baltika.ships_type(
@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS baltika.ships(
 CREATE TABLE IF NOT EXISTS baltika.sender(
     ID SERIAL PRIMARY KEY,
     Sender VARCHAR(30) NOT NULL,
-    INNsender INT NOT NULL,
+    INNsender BIGINT NOT NULL,
     BankSender VARCHAR(60) NOT NULL,
     AddressSender VARCHAR(80) NOT NULL
 );
@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS baltika.sender(
 CREATE TABLE IF NOT EXISTS baltika.consignee(
     ID SERIAL PRIMARY KEY,
     Consignee VARCHAR(30) NOT NULL,
-    INNconsignee VARCHAR(10) NOT NULL,
+    INNconsignee BIGINT NOT NULL,
     BankConsignee VARCHAR(60) NOT NULL,
     AddressConsignee VARCHAR(80) NOT NULL
 );

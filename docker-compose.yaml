@@ -22,8 +22,8 @@ services:
       POSTGRES_PASSWORD: password
       PGDATA: /data/postgres
     volumes:
-      - ./database_sql/db_table_creation.sql:/docker-entrypoint-initdb.d/db_table_creation.sql
-      - ./database_sql/db_function_creation.sql:/docker-entrypoint-initdb.d/db_function_creation.sql
-      - ./database_sql/db_data_insert.sql:/docker-entrypoint-initdb.d/db_data_insert.sql
+      - ./database_sql/01_db_table_creation.sql:/docker-entrypoint-initdb.d/01_db_table_creation.sql
+      - ./database_sql/03_db_function_creation.sql:/docker-entrypoint-initdb.d/03_db_function_creation.sql
+      - ./database_sql/02_db_data_insert.sql:/docker-entrypoint-initdb.d/02_db_data_insert.sql
     ports:
       - "5432:5432"

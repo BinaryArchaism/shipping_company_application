@@ -1,5 +1,3 @@
-CREATE DATABASE baltika;
-
 CREATE SCHEMA IF NOT EXISTS baltika;
 
 CREATE TABLE IF NOT EXISTS baltika.ports(

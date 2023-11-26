@@ -1,3 +1,4 @@
+-- Функция добавления порта
 CREATE OR REPLACE FUNCTION baltika.add_port(port_data json)
     RETURNS INTEGER AS
 $$
@@ -20,6 +21,7 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
+-- Функция добавления корабля
 CREATE OR REPLACE FUNCTION baltika.add_ship(ship_data json)
     RETURNS INTEGER AS
 $$
@@ -46,6 +48,7 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
+-- Функция создания отправителя
 CREATE OR REPLACE FUNCTION baltika.add_sender(sender_data json)
     RETURNS INTEGER AS
 $$
@@ -68,7 +71,7 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-
+-- Функция создания получателя
 CREATE OR REPLACE FUNCTION baltika.add_consignee(consignee_data json)
     RETURNS INTEGER AS
 $$
@@ -91,7 +94,7 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-
+-- Функция создания груза
 CREATE OR REPLACE FUNCTION baltika.add_cargo(cargo_data json)
     RETURNS INTEGER AS
 $$

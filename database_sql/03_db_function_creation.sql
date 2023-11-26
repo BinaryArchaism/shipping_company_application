@@ -117,20 +117,20 @@ BEGIN
         DeclareValue, Unit, InsureValue, Sender, Consignee, Comment
     FROM json_to_record(
                  cargo_data
-             ) AS res(CustomValue INT,
-                      DepartureDate DATE,
-                      ArriveDate DATE,
-                      Origin INT,
-                      Destination INT,
-                      CustomClearance BOOL,
-                      Number INT,
-                      Shipment VARCHAR(30),
-                      DeclareValue INT,
-                      Unit VARCHAR(10),
-                      InsureValue INT,
-                      Sender INT,
-                      Consignee INT,
-                      Comment TEXT);
+             ) AS res(custom_value INT,
+                      departure_date DATE,
+                      arrive_date DATE,
+                      origin INT,
+                      destination INT,
+                      custom_clearance BOOL,
+                      number INT,
+                      shipment VARCHAR(30),
+                      declare_value INT,
+                      unit VARCHAR(10),
+                      insure_value INT,
+                      sender INT,
+                      consignee INT,
+                      comment TEXT);
 
     IF DepartureDate > ArriveDate THEN
         RAISE 'ArriveDate cant be less than DepartureDate';
